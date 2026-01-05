@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARGSETU.AI - Bridging Education & Opportunity</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #7c3aed;
+    --accent-color: #f59e0b;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --text-dark: #334155;
+    --text-light: #64748b;
+    --success: #10b981;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 150px 0 100px;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+/* About Section */
+.about {
+    background: var(--light);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.about-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+}
+
+.about-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Solutions Section */
+.solution-category {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.solution-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.solution-card:hover {
+    transform: scale(1.05);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.solution-card h4 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.business-models {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.model-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 15px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.model-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.model-card ul {
+    list-style: none;
+}
+
+.model-card li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.model-card li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: bold;
+}
+
+/* Innovation Section */
+.innovation {
+    background: var(--light);
+}
+
+.innovation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.innovation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-top: 4px solid var(--accent-color);
+}
+
+.innovation-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Impact Section */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.impact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.impact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.impact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.impact-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.chatbot-container.active {
+    display: flex;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.bot-message {
+    background: var(--light);
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    max-width: 80%;
+}
+
+.user-message {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    max-width: 80%;
+    margin-left: auto;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 25px;
+    margin-right: 0.5rem;
+}
+
+.chatbot-input button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.chatbot-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: transform 0.3s;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Contact Section */
+.contact {
+    background: var(--light);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--dark);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3, .footer-section h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #334155;
+    color: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .chatbot-container {
+        width: 90%;
+        right: 5%;
+    }
+}
+    </style>
+</head>
+<body>
+    <script>
+        // Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu if open
+            navMenu.classList.remove('active');
+        }
+    });
+});
+
+// Navbar Background Change on Scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.15)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    }
+});
+
+// Chatbot Functionality
+const chatToggle = document.getElementById('chatToggle');
+const chatbot = document.getElementById('chatbot');
+const closeChat = document.getElementById('closeChat');
+const sendMessage = document.getElementById('sendMessage');
+const userInput = document.getElementById('userInput');
+const chatMessages = document.getElementById('chatMessages');
+
+chatToggle.addEventListener('click', () => {
+    chatbot.classList.toggle('active');
+    chatToggle.style.display = chatbot.classList.contains('active') ? 'none' : 'block';
+});
+
+closeChat.addEventListener('click', () => {
+    chatbot.classList.remove('active');
+    chatToggle.style.display = 'block';
+});
+
+// Predefined responses for chatbot
+const chatResponses = {
+    'hello': 'Hello! Welcome to MARGSETU.AI. How can I assist you today?',
+    'hi': 'Hi there! Im here to help you learn more about MARGSETU.AI.',
+    'what is margsetu': 'MARGSETU.AI is an AI-powered education platform that bridges the gap between education and opportunity across rural and urban India. We provide personalized learning, skill development, and career guidance.',
+    'solutions': 'We offer multiple solutions including Mobile & Web Platform, AI Study Assistant, Offline AI Boxes for remote areas, and Government Connect Portal. Which one would you like to know more about?',
+    'rural': 'For rural areas, we provide Offline AI Boxes that work without internet, Education Kendras with device access, and direct government connectivity programs.',
+    'students': 'Students can access personalized learning paths, study materials, real-time job market insights, and career guidance through our platform.',
+    'government': 'We partner with government institutions to provide AI-enabled education boxes, monitoring systems, and student-officer connectivity portals.',
+    'skills': 'Our AI tracks job requirements from LinkedIn, Naukri, and Indeed to recommend the latest in-demand skills you should learn.',
+    'contact': 'You can reach us at info@margsetu.ai or fill out the contact form on our website!',
+    'default': 'Thats a great question! Our platform offers comprehensive solutions for education and skill development. Would you like to know about our solutions for students, institutions, or rural areas?'
+};
+
+function addMessage(message, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = isUser ? 'user-message' : 'bot-message';
+    messageDiv.innerHTML = `<p>${message}</p>`;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getBotResponse(userMessage) {
+    const lowercaseMessage = userMessage.toLowerCase();
+
+    for (let key in chatResponses) {
+        if (lowercaseMessage.includes(key)) {
+            return chatResponses[key];
+        }
+    }
+
+    return chatResponses['default'];
+}
+
+sendMessage.addEventListener('click', () => {
+    const message = userInput.value.trim();
+    if (message) {
+        addMessage(message, true);
+        userInput.value = '';
+
+        // Simulate bot thinking
+        setTimeout(() => {
+            const response = getBotResponse(message);
+            addMessage(response, false);
+        }, 500);
+    }
+});
+
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage.click();
+    }
+});
+
+// Contact Form Submission
+const contactForm = document.querySelector('.contact-form');
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Here you would typically send the form data to a server
+    alert('Thank you for your interest! We will get back to you soon.');
+    contactForm.reset();
+});
+
+// Intersection Observer for Animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all cards and sections
+document.querySelectorAll('.about-card, .solution-card, .innovation-card, .impact-card').forEach(el => {
+    observer.observe(el);
+});
+
+// Add dynamic statistics counter (optional enhancement)
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+
+    const counter = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target;
+            clearInterval(counter);
+        } else {
+            element.textContent = Math.floor(start);
+        }
+    }, 16);
+}
+
+// Initialize counters when they come into view
+const counterElements = document.querySelectorAll('[data-count]');
+counterElements.forEach(element => {
+    observer.observe(element);
+    element.addEventListener('animationstart', () => {
+        const target = parseInt(element.getAttribute('data-count'));
+        animateCounter(element, target);
+    });
+});
+
+console.log('MARGSETU.AI website loaded successfully!');
+
+
+    </script>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">MARGSETU.AI</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Building Bridges to Opportunity</h1>
+                <p class="tagline">AI-Powered Education Platform Connecting Rural & Urban India</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">What is MARGSETU.AI?</h2>
+            <p class="section-subtitle">MARG (Path) + SETU (Bridge) = Your Bridge to the Right Path</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">🎓</div>
+                    <h3>AI-Powered Mentor</h3>
+                    <p>Personalized guidance platform for students and professionals, acting as your digital mentor to push you in the right direction</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">📚</div>
+                    <h3>Complete Learning Ecosystem</h3>
+                    <p>Access study materials, coaching solutions, and one-stop EdTech integration for comprehensive skill development</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🌍</div>
+                    <h3>Bridging the Divide</h3>
+                    <p>Solving education gaps for both rural and urban areas through innovative offline and online solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <h2 class="section-title">Our Solutions</h2>
+
+            <div class="solution-category">
+                <h3 class="category-title">For Students & Institutions</h3>
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="card-icon">📱</div>
+                        <h4>Mobile & Web Platform</h4>
+                        <p>Comprehensive guidance app connecting students with personalized learning paths and career opportunities</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="card-icon">🤖</div>
+                        <h4>AI Study Assistant</h4>
+                        <p>Real-time skill recommendations by tracking job requirements from LinkedIn, Naukri, and Indeed to keep you industry-ready</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="card-icon">📦</div>
+                        <h4>Offline AI Boxes</h4>
+                        <p>Specialized hardware for government schools in remote areas, enabling quality education without internet dependency</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="card-icon">🏛️</div>
+                        <h4>Government Connect Portal</h4>
+                        <p>Direct connectivity between students and government officers for seamless access to schemes and opportunities</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-category">
+                <h3 class="category-title">Business Model</h3>
+                <div class="business-models">
+                    <div class="model-card">
+                        <h4>B2C Solutions</h4>
+                        <ul>
+                            <li>Individual student subscriptions</li>
+                            <li>Professional upskilling programs</li>
+                            <li>Career guidance services</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <h4>B2B Solutions</h4>
+                        <ul>
+                            <li>Government institution partnerships</li>
+                            <li>Private school integrations</li>
+                            <li>Corporate training programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="innovation">
+        <div class="container">
+            <h2 class="section-title">Innovative Programs</h2>
+            <div class="innovation-grid">
+                <div class="innovation-card">
+                    <h4>📍 Education Kendras</h4>
+                    <p>Device Access Program establishing learning centers in rural areas to promote digital literacy and skill development</p>
+                </div>
+                <div class="innovation-card">
+                    <h4>📊 Smart Monitoring System</h4>
+                    <p>Advanced tracking and analytics for both rural and urban education systems, providing actionable insights to stakeholders</p>
+                </div>
+                <div class="innovation-card">
+                    <h4>🎯 Career Path Advisor</h4>
+                    <p>Track current situation and provide future planning advice based on real-time job market analysis</p>
+                </div>
+                <div class="innovation-card">
+                    <h4>🗂️ Data-Driven Policy Support</h4>
+                    <p>Anonymized insights shared with government to help shape better educational policies and schemes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Economic Stability</h3>
+                    <p>Enhancing family income and reducing unemployment through skill-based education and job placement support</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🌐</div>
+                    <h3>Digital Inclusion</h3>
+                    <p>Connecting every child from remote corners to opportunities through our offline-enabled solutions</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">💼</div>
+                    <h3>Employment Ready</h3>
+                    <p>Latest skill recommendations synced with real-time job market demands from top hiring platforms</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🚀</div>
+                    <h3>Future-Ready Education</h3>
+                    <p>Building a comprehensive EdTech environment that evolves with industry needs and government initiatives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <h4>MARGSETU Assistant</h4>
+            <button class="close-chat" id="closeChat">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="bot-message">
+                <p>Hello! I'm your MARGSETU.AI assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatToggle">💬</button>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Join us in revolutionizing education across India</p>
+            <form class="contact-form">
+                <div class="form-row">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Organization (Optional)">
+                    <select>
+                        <option>I am a...</option>
+                        <option>Student</option>
+                        <option>Professional</option>
+                        <option>Government Official</option>
+                        <option>Educational Institution</option>
+                        <option>Investor</option>
+                    </select>
+                </div>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MARGSETU.AI</h3>
+                    <p>Bridging the gap between education and opportunity across India</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#solutions">Solutions</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li>📧 info@margsetu.ai</li>
+                        <li>📱 +91 XXXXX XXXXX</li>
+                        <li>🔗 LinkedIn | Twitter</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MARGSETU.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
